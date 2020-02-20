@@ -10,11 +10,6 @@ public class Frame extends JFrame{
   Mover mov = new Mover();
 
   public Frame(){
-    initUI(Wwidth,Wheight);
-  }
-
-  public void initUI(int Wwidth, int Wheight){
-
     add(new GraphicsPanel());
     addKeyListener(mov);
     setSize(Wwidth,Wheight);
@@ -24,4 +19,6 @@ public class Frame extends JFrame{
 
 
   }
+
+
 }

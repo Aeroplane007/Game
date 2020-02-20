@@ -3,13 +3,18 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.awt.*;
 
-public class DrawEnemy extends Skeleton{
+public class DrawEnemy{
 
   BufferedImage img;
   String ImgName = "enemy.png";
+  private int posx;
+  private int posy;
+  private int width;
+  private int height;
 
   public DrawEnemy(Graphics g){
-    super(0,0,0,0);
+    posx=0;
+    posy=0;
 
     try {
         img = ImageIO.read(new File(ImgName));
@@ -17,7 +22,7 @@ public class DrawEnemy extends Skeleton{
         System.out.println("Error occured while loading data");
     }
 
-    g.drawImage(img,super.getposx(),super.getposy(),null);
+    g.drawImage(img,posx,posy,null);
   }
 
 

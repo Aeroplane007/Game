@@ -6,36 +6,23 @@ import javax.imageio.ImageIO;
 
 public class GraphicsPanel extends JPanel{
 
-  moveint herox = new moveint(200);
-  moveint heroy = new moveint(200);
-  BufferedImage img = null;
 
-  public void repain(){
-    this.repaint();
-  }
+  BufferedImage img = null;
+  private Hero hero = new Hero();
+  private Plane plane = new Plane();
+
 
   public void paint(Graphics g) {
       super.paint(g);
-      this.setBackground(Color.BLACK);
-      new LoadField(g);
-      new DrawHero(g);
+      plane.LoadPlane(g);
+      hero.drawhero(g);
       //new DrawEnemy(g);
   }
-
-  public void drawhero(int width, int height, int x, int y, Graphics g){
-    g.fillRect(width,height,x,y);
+  public void thisx(){
+    System.out.println(hero.getposx());
   }
 
 
-  public void loadimg(String file,Graphics g, BufferedImage img){
-    try {
-        img = ImageIO.read(new File(file));
-    } catch (IOException e) {
-        System.out.println("Error occured while loading data");
-    }
-    g.drawImage(img,0,0,null);
-
-  }
 
 
 

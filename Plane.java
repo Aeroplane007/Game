@@ -3,13 +3,22 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.awt.*;
 
-public class LoadField extends Skeleton{
+public class Plane{
+  private int posx;
+  private int posy;
+  private int width;
+  private int height;
 
   BufferedImage img;
   String ImgName = "green.jpg";
 
-  public LoadField(Graphics g){
-    super(0,0,0,0);
+  public Plane(){
+    posx=0;
+    posy=0;
+
+  }
+
+  public void LoadPlane(Graphics g){
 
     try {
         img = ImageIO.read(new File(ImgName));
@@ -17,10 +26,12 @@ public class LoadField extends Skeleton{
         System.out.println("Error occured while loading data");
     }
 
-    g.drawImage(img,super.getposx(),super.getposy(),null);
+    g.drawImage(img,posx,posy,null);
+
 
 
   }
+
 
 
 
