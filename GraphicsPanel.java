@@ -16,19 +16,14 @@ public class GraphicsPanel extends JPanel{
 
   public void paint(Graphics g) {
       super.paint(g);
-      g.setColor(Color.RED);
-      setback(Color.BLACK);
-      loadimg("green.jpg",g,img);
-      drawhero(herox.get(),heroy.get(),20,20,g);
+      this.setBackground(Color.BLACK);
+      new LoadField(g);
+      new DrawHero(g);
+      //new DrawEnemy(g);
   }
 
   public void drawhero(int width, int height, int x, int y, Graphics g){
     g.fillRect(width,height,x,y);
-  }
-
-
-  public void setback(Color color){
-    this.setBackground(color);
   }
 
 

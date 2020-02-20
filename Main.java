@@ -16,8 +16,8 @@ public class Main{
     Frame ex = new Frame();
     ex.setVisible(true);
     while(true){
-      ex.repaint();
-    }
+       ex.repaint();
+     }
 
 
   }
