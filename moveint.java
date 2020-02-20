@@ -4,7 +4,10 @@ public class moveint{
   public moveint(int a){
     this.a=a;
   }
-  public int getn(){return a;}
+  public int get(){return a;}
+  public void add(int b){
+    a+=1;
+  }
 
 
 }

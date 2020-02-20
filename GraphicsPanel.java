@@ -6,21 +6,23 @@ import javax.imageio.ImageIO;
 
 public class GraphicsPanel extends JPanel{
 
-  moveint herox = 200;
-  moveint heroy = 200;
+  moveint herox = new moveint(200);
+  moveint heroy = new moveint(200);
   BufferedImage img = null;
 
-  public GraphicsPanel(){}
+  public void repain(){
+    this.repaint();
+  }
 
   public void paint(Graphics g) {
       super.paint(g);
       g.setColor(Color.RED);
       setback(Color.BLACK);
       loadimg("green.jpg",g,img);
-      drawrect(herox,heroy,20,20,g);
+      drawhero(herox.get(),heroy.get(),20,20,g);
   }
 
-  public void drawrect(int width, int height, int x, int y, Graphics g){
+  public void drawhero(int width, int height, int x, int y, Graphics g){
     g.fillRect(width,height,x,y);
   }
 

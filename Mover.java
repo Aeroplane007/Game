@@ -5,15 +5,16 @@ public class Mover implements KeyListener{
 
   private GraphicsPanel movh = new GraphicsPanel();
 
-  public void move(moveint x, moveint y){
-    x+=1;
-    y+=1;
+
+  public void move(moveint x, moveint y,int addx, int addy){
+    x.add(addx);
+    y.add(addy);
   }
 
   public void keyPressed(KeyEvent e){
-    movh.herox+=5;
-    System.out.println(movh.herox);
-    move(movh.herox,movh.heroy);
+    System.out.println(movh.herox.get());
+    move(movh.herox,movh.heroy,1,1);
+
   }
   public void keyReleased(KeyEvent e){}
   public void keyTyped(KeyEvent e){}
