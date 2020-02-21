@@ -5,29 +5,40 @@ public class Mover implements KeyListener{
 
   private GraphicsPanel movh = new GraphicsPanel();
   private Hero hero = new Hero();
-  private int speed = 10;
+  private Plane plane = new Plane();
+  private int totalspeed=5;
+  private static int speedx;
+  private static int speedy;
 
-  public void movex(Skeleton GObj,int i){
-    GObj.setposx(GObj.getposx()+i);
+  public void moveherox(){
+    hero.setposx(hero.getposx()+speedx);
   }
-  public void movey(Skeleton GObj,int i){
-    GObj.setposy(GObj.getposy()+i);
+  public void moveheroy(){
+    hero.setposy(hero.getposy()+speedy);
   }
 
   public void keyPressed(KeyEvent e){
     if(e.getKeyCode() == e.VK_RIGHT){
-      movex(hero,speed);
+        speedx = totalspeed;
     }if(e.getKeyCode() == e.VK_LEFT){
-       movex(hero,-speed);
+       speedx= -totalspeed;
     }if(e.getKeyCode() == e.VK_UP){
-       movey(hero,-speed);
+       speedy= -totalspeed;
     }if(e.getKeyCode() == e.VK_DOWN){
-       movey(hero,speed);
+       speedy = totalspeed;
     }
 
-
   }
-  public void keyReleased(KeyEvent e){}
+
+
+
+  public void keyReleased(KeyEvent e){
+      if(e.getKeyCode() == e.VK_RIGHT || e.getKeyCode() == e.VK_LEFT){
+          speedx =0;
+      }if(e.getKeyCode() == e.VK_UP || e.getKeyCode() == e.VK_DOWN){
+         speedy=0;
+      }
+    }
   public void keyTyped(KeyEvent e){}
 
       }

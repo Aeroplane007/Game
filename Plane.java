@@ -4,26 +4,24 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 
 public class Plane implements Skeleton{
-  private int posx;
-  private int posy;
-  private int width;
-  private int height;
+  private static int posx;
+  private static int posy;
+  private static int width;
+  private static int height;
 
   BufferedImage img;
   String ImgName = "green.jpg";
 
   public Plane(){
-    posx=0;
-    posy=0;
+    posx=(-Frame.Wwidth)/2;
+    posy=(-Frame.Wheight)/2;
+    width=Frame.Wwidth*2;
+    height=Frame.Wheight*2;
   }
 
   public void LoadPlane(Graphics g){
-    try {
-        img = ImageIO.read(new File(ImgName));
-    }catch (IOException e) {
-        System.out.println("Error occured while loading data");
-    }
-    g.drawImage(img,posx,posy,null);
+    g.setColor(Color.GREEN);
+    g.fillRect(posx,posy,width,height);
   }
 
   public int getposx(){return posx;}

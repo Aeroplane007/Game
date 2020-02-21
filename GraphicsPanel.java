@@ -15,10 +15,10 @@ public class GraphicsPanel extends Canvas{
   public void paint(Graphics g) {
 
       super.paint(g);
-      //plane.LoadPlane(g);
-      this.setBackground(Color.BLACK);
-      g.fillRect(0,0,Frame.Wwidth,Frame.Wheight);
+      plane.LoadPlane(g);
       hero.drawhero(g);
+      g.setColor(Color.BLACK);
+      g.fillRect(300,300,20,20);
 
       //new DrawEnemy(g);
   }

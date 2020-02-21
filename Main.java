@@ -10,6 +10,7 @@ public class Main implements Runnable{
   private boolean running = false;
   private GraphicsPanel graphic = new GraphicsPanel();
   private Frame ex = new Frame();
+  private Mover mov = new Mover();
 
   public Main(){
     ex.setVisible(true);
@@ -63,7 +64,8 @@ public class Main implements Runnable{
   }
 
   private void tick(){
-
+    mov.moveherox();
+    mov.moveheroy();
   }
 
   public void render(){
