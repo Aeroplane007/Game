@@ -1,16 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
+import java.awt.image.BufferStrategy;
 
 public class Main implements Runnable{
 
 
   private Thread thread;
   private boolean running = false;
+  private GraphicsPanel graphic = new GraphicsPanel();
+  private Frame ex = new Frame();
 
   public Main(){
-    Frame ex = new Frame();
     ex.setVisible(true);
+    start();
   }
 
   public synchronized void start(){
@@ -49,11 +52,11 @@ public class Main implements Runnable{
       }
       frames++;
 
-      if(System.currentTimeMillis() - timer > 1000){
-        timer += 1000;
-        System.out.println("FPS: " + frames);
-        frames = 0;
-      }
+      // if(System.currentTimeMillis() - timer > 1000){
+      //   timer += 1000;
+      //   System.out.println("FPS: " + frames);
+      //   frames = 0;
+      // }
     }
     stop();
 
@@ -62,7 +65,19 @@ public class Main implements Runnable{
   private void tick(){
 
   }
+
   public void render(){
+    //skapa minnes plats för ny ruta
+    BufferStrategy bs = ex.getBufferStrategy();
+    if(bs==null){
+      ex.createBufferStrategy(3);
+      return;
+    }
+
+    Graphics g = bs.getDrawGraphics();
+    graphic.paint(g);
+    g.dispose();
+    bs.show();
 
   }
 

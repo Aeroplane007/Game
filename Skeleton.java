@@ -14,8 +14,5 @@ public interface Skeleton{
   public void setwidth(int width);
   public void setheight(int height);
 
-  public void addx(int b);
-  public void addy(int b);
-
 
 }

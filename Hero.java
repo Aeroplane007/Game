@@ -32,8 +32,6 @@ public class Hero implements Skeleton{
   public void setwidth(int width){this.width=width;}
   public void setheight(int height){this.height=height;}
 
-  public void addx(int b){posx+=1;}
-  public void addy(int b){posy+=1;}
 
 
 }
