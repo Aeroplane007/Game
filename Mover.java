@@ -14,6 +14,7 @@ public class Mover implements KeyListener{
 
   public void keyPressed(KeyEvent e){
     System.out.println(hero.getposx());
+    move(hero);
 
 
   }

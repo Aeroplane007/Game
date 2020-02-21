@@ -18,11 +18,6 @@ public class GraphicsPanel extends JPanel{
       hero.drawhero(g);
       //new DrawEnemy(g);
   }
-  public void thisx(){
-    System.out.println(hero.getposx());
-  }
-
-
 
 
 

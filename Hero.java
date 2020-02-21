@@ -1,11 +1,11 @@
 import java.awt.*;
 
-public class Hero{
+public class Hero implements Skeleton{
 
-  private int posx;
-  private int posy;
-  private int width;
-  private int height;
+  private static int posx;
+  private static int posy;
+  private static int width;
+  private static int height;
 
   public Hero(){
     posx=200;
@@ -31,6 +31,9 @@ public class Hero{
   public void setposy(int y){posy=y;}
   public void setwidth(int width){this.width=width;}
   public void setheight(int height){this.height=height;}
+
+  public void addx(int b){posx+=1;}
+  public void addy(int b){posy+=1;}
 
 
 }
