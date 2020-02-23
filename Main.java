@@ -16,8 +16,10 @@ public class Main implements Runnable{
   private Plane plane = new Plane();
   private ViewBox viewbox = new ViewBox();
 
+
   public Main(){
     ex.setVisible(true);
+    new LoadImg();
     start();
   }
 

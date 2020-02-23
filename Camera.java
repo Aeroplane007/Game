@@ -6,6 +6,7 @@ public class Camera{
   private Hero hero = new Hero();
   private ViewBox viewbox = new ViewBox();
   private Collision col = new Collision();
+  private GraphicsPanel graph = new GraphicsPanel();
 
   public Camera(int x, int y){
     this.x = x;
@@ -17,6 +18,7 @@ public class Camera{
       x-=3;
       viewbox.setposx(viewbox.getposx()+3);
       plane.setposx(plane.getposx()+3);
+      graph.generategrass();
     }
 
     if(col.collidedinsidel(hero,viewbox)){

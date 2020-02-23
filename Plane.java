@@ -9,8 +9,7 @@ public class Plane implements Skeleton{
   private static int width;
   private static int height;
 
-  BufferedImage img;
-  String ImgName = "green.jpg";
+
 
   public Plane(){
     posx=(-Frame.Wwidth)/2;
