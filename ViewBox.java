@@ -1,28 +1,31 @@
-import java.io.*;
-import java.awt.image.BufferedImage;
-import javax.imageio.ImageIO;
 import java.awt.*;
 
-public class Plane implements Skeleton{
+
+public class ViewBox implements Skeleton{
+
+
   private static int posx;
   private static int posy;
   private static int width;
   private static int height;
+  private static int speedx;
+  private static int speedy;
 
-  BufferedImage img;
-  String ImgName = "green.jpg";
-
-  public Plane(){
-    posx=(-Frame.Wwidth)/2;
-    posy=(-Frame.Wheight)/2;
-    width=Frame.Wwidth*2;
-    height=Frame.Wheight*2;
+  public ViewBox(){
+    this.posx=100;
+    this.posy = 100;
+    this.width = 300;
+    this.height = 300;
   }
 
   public void render(Graphics g){
-    g.setColor(Color.GREEN);
-    g.fillRect(posx,posy,width,height);
+    g.setColor(Color.BLACK);
+    g.drawRect(posx,posy,width,height);
   }
+  public void tick(){
+
+  }
+
 
   public int getposx(){return posx;}
   public int getposy(){return posy;}
@@ -33,12 +36,8 @@ public class Plane implements Skeleton{
   public void setposy(int y){posy=y;}
   public void setwidth(int width){this.width=width;}
   public void setheight(int height){this.height=height;}
-
-  public void addx(int b){posx+=1;}
-  public void addy(int b){posy+=1;}
-
-
-
+  public void setspeedx(int speedx){this.speedx=speedx;}
+  public void setspeedy(int speedy){this.speedy=speedy;}
 
 
 

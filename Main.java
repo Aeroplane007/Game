@@ -11,6 +11,10 @@ public class Main implements Runnable{
   private GraphicsPanel graphic = new GraphicsPanel();
   private Frame ex = new Frame();
   private Mover mov = new Mover();
+  private Camera cam = new Camera(0,0);
+  private Hero hero = new Hero();
+  private Plane plane = new Plane();
+  private ViewBox viewbox = new ViewBox();
 
   public Main(){
     ex.setVisible(true);
@@ -64,8 +68,9 @@ public class Main implements Runnable{
   }
 
   private void tick(){
-    mov.moveherox();
-    mov.moveheroy();
+    hero.tick();
+    cam.tick(hero);
+    cam.tick(plane);
   }
 
   public void render(){
@@ -77,7 +82,12 @@ public class Main implements Runnable{
     }
 
     Graphics g = bs.getDrawGraphics();
+    Graphics2D g2d = (Graphics2D) g;
+    g2d.translate(cam.getX(),cam.getY());
+
     graphic.paint(g);
+
+    g2d.translate(-cam.getX(),-cam.getY());
     g.dispose();
     bs.show();
 
