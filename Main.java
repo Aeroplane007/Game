@@ -32,6 +32,7 @@ public class Main implements Runnable{
     try{
     thread.join();
     running = false;
+
   }catch(Exception e){
     System.out.println("Could not stop thread" + e.getStackTrace());
   }

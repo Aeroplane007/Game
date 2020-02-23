@@ -7,6 +7,7 @@ public class Camera{
   private ViewBox viewbox = new ViewBox();
   private Collision col = new Collision();
   private GraphicsPanel graph = new GraphicsPanel();
+  private Mover move = new Mover();
 
   public Camera(int x, int y){
     this.x = x;
@@ -15,9 +16,9 @@ public class Camera{
 
   public void tick(Skeleton obj){
     if(col.collidedinsider(hero,viewbox)){
-      x-=3;
-      viewbox.setposx(viewbox.getposx()+3);
-      plane.setposx(plane.getposx()+3);
+      x-=move.getspeed();
+      viewbox.setposx(viewbox.getposx()+move.getspeed());
+      plane.setposx(plane.getposx()+move.getspeed());
       graph.generategrass();
     }
 
