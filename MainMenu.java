@@ -16,7 +16,10 @@ public class MainMenu{
   public JPanel menu(){
     panel = new JPanel();
     JButton OKButton = new JButton("start");
+<<<<<<< HEAD
     OKButton.setFocusable(false);
+=======
+>>>>>>> e58bcbc13d4cf7720ea420f545ab1fb05dcf5773
     //JButton CancelButton = new JButton("Cancel");
     OKButton.addActionListener(e -> okButtonPress());
     //CancelButton.addActionListener((this) -> cancelButtonPress());
@@ -36,6 +39,10 @@ public class MainMenu{
       Thread.sleep(10);
 
     }catch(Exception e){}
+<<<<<<< HEAD
+=======
+      System.out.println("helloo");
+>>>>>>> e58bcbc13d4cf7720ea420f545ab1fb05dcf5773
     }
   }
 

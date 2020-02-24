@@ -5,7 +5,7 @@ public class LoadObj{
 
   public LoadObj(){
     graphic.addObj(plane);
-    
+
   }
 
 
