@@ -1,4 +1,4 @@
-public enum GameType{ HERO,PLANE
+public enum GameType{ HERO,PLANE,GRASS
 
 
 }

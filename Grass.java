@@ -10,10 +10,12 @@ public class Grass implements Skeleton{
   private int posy;
   private int width;
   private int height;
+  private String ID = "GRASS";
+
   static BufferedImage imgF,imgC;
   String ImgNameF = "Grass.jpg";
   String ImgNameC = "GrassOp.jpg";
-  String ID = "Grass";
+
 
   public Grass(){
     this.posx=0;
@@ -31,26 +33,28 @@ public class Grass implements Skeleton{
     }
   }
 
-   public void render1(Graphics g){
+   public void render(Graphics g){
+
        g.drawImage(imgF, posx, posy,width,height, null);
+
+       g.drawImage(imgC, posx, posy,width,height, null);
+
     }
 
-    public void render2(Graphics g){
-        g.drawImage(imgC, posx, posy,width,height, null);
-     }
+
+
+
 
 
     public void tick(){
 
     }
 
-
-
-
   public int getposx(){return posx;}
   public int getposy(){return posy;}
   public int getwidth(){return width;}
   public int getheight(){return height;}
+  public String getId(){return ID;}
 
   public void setposx(int x){posx=x;}
   public void setposy(int y){posy=y;}

@@ -10,6 +10,7 @@ public class ViewBox implements Skeleton{
   private static int height;
   private static int speedx;
   private static int speedy;
+  private String ID = "ViewBox";
 
   public ViewBox(){
     this.posx=100;
@@ -31,6 +32,7 @@ public class ViewBox implements Skeleton{
   public int getposy(){return posy;}
   public int getwidth(){return width;}
   public int getheight(){return height;}
+  public String getId(){return ID;}
 
   public void setposx(int x){posx=x;}
   public void setposy(int y){posy=y;}

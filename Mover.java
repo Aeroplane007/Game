@@ -27,10 +27,10 @@ public class Mover implements KeyListener{
     }if(e.getKeyCode() == e.VK_UP){
        hero.setspeedy(-totalspeed);
     }
-    //possible boost
-    // if(e.getKeyCode() == e.VK_DOWN){
-    //   hero.setspeedy(totalspeed);
-    // }
+
+    if(e.getKeyCode() == e.VK_DOWN){
+      hero.setspeedy(totalspeed);
+    }
 
 
   }

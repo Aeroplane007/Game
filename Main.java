@@ -15,11 +15,15 @@ public class Main implements Runnable{
   private Hero hero = new Hero();
   private Plane plane = new Plane();
   private ViewBox viewbox = new ViewBox();
+  private MainMenu mainmenu = new MainMenu();
 
 
   public Main(){
+  //  ex.add(mainmenu.menu());
     ex.setVisible(true);
+    //mainmenu.imenu();
     new LoadImg();
+    new LoadObj();
     start();
   }
 

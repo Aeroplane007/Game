@@ -8,6 +8,8 @@ public class Plane implements Skeleton{
   private static int posy;
   private static int width;
   private static int height;
+  private String ID = "PLANE";
+
 
 
 
@@ -18,6 +20,7 @@ public class Plane implements Skeleton{
     height=Frame.Wheight*2;
   }
 
+  public void tick(){}
   public void render(Graphics g){
     g.setColor(Color.GREEN);
     g.fillRect(posx,posy,width,height);
@@ -27,6 +30,7 @@ public class Plane implements Skeleton{
   public int getposy(){return posy;}
   public int getwidth(){return width;}
   public int getheight(){return height;}
+  public String getId(){return ID;}
 
   public void setposx(int x){posx=x;}
   public void setposy(int y){posy=y;}
