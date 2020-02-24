@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Hero implements Skeleton{
+public class RenderBox implements Skeleton{
 
   private static int posx;
   private static int posy;
@@ -8,25 +8,22 @@ public class Hero implements Skeleton{
   private static int height;
   private static int speedx;
   private static int speedy;
-  private String ID = "HERO";
+  private String ID = "RENDERBOX";
+  private Hero hero = new Hero();
 
-  public Hero(){
-    posx=200;
-    posy=200;
-    width=20;
-    height=20;
-
+  public RenderBox(){
+    this.posx=-100;
+    this.posy = -100;
+    this.width = 650;
+    this.height = 600;
   }
 
   public void render(Graphics g){
-    g.setColor(Color.BLUE);
-    g.fillRect(posx,posy,width,height);
-
 
   }
+
   public void tick(){
-    setposx(getposx()+speedx);
-    setposy(getposy()+speedy);
+
   }
 
 
@@ -42,6 +39,9 @@ public class Hero implements Skeleton{
   public void setheight(int height){this.height=height;}
   public void setspeedx(int speedx){this.speedx=speedx;}
   public void setspeedy(int speedy){this.speedy=speedy;}
+
+
+
 
 
 }

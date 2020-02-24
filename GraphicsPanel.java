@@ -1,8 +1,12 @@
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Color;
 import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
+import java.lang.Math.*;
+import java.util.*;
+
 
 public class GraphicsPanel extends JPanel{
 
@@ -10,16 +14,46 @@ public class GraphicsPanel extends JPanel{
   BufferedImage img = null;
   private Hero hero = new Hero();
   private Plane plane = new Plane();
+  private ViewBox viewbox = new ViewBox();
+  private static List<Skeleton> gameobjects = new LinkedList<Skeleton>();
+  private Collision col = new Collision();
+  private RenderBox renderB = new RenderBox();
 
 
   public void paint(Graphics g) {
+
       super.paint(g);
-      plane.LoadPlane(g);
-      hero.drawhero(g);
+      plane.render(g);
+      for(Skeleton c : gameobjects){
+        if(c.getId()!="HERO"){
+          if(col.isInside(c,renderB)){
+            c.render(g);
+          }
+
+        }
+
+      }
+      hero.render(g);
+
+      viewbox.render(g);
+      g.setColor(Color.BLACK);
+      g.fillRect(600,300,20,20);
+
       //new DrawEnemy(g);
   }
-  public void thisx(){
-    System.out.println(hero.getposx());
+
+
+  public void addObj(Skeleton obj){
+    gameobjects.add(obj);
+  }
+  public Skeleton getObj(int i){
+    return gameobjects.get(i);
+  }
+  public int getsizeofGameobj(){
+    return gameobjects.size();
+  }
+  public Skeleton GetOb(int i){
+    return gameobjects.get(i);
   }
 
 

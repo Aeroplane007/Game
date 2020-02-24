@@ -5,19 +5,48 @@ public class Mover implements KeyListener{
 
   private GraphicsPanel movh = new GraphicsPanel();
   private Hero hero = new Hero();
+  private Plane plane = new Plane();
+  private static int totalspeed;
 
-
-  public void move(Skeleton GObj){
-    GObj.addx(1);
-    GObj.addy(1);
+  public Mover(){
+    totalspeed = 3;
   }
+
+
+
 
   public void keyPressed(KeyEvent e){
-    System.out.println(hero.getposx());
+
+    if(e.getKeyCode() == e.VK_RIGHT){
+        hero.setspeedx(totalspeed);
+    }if(e.getKeyCode() == e.VK_LEFT){
+       hero.setspeedx(-totalspeed);
+    }if(e.getKeyCode() == e.VK_UP){
+       hero.setspeedy(-totalspeed);
+    }
+
+    if(e.getKeyCode() == e.VK_DOWN){
+      hero.setspeedy(totalspeed);
+    }
 
 
   }
-  public void keyReleased(KeyEvent e){}
+
+
+
+  public void keyReleased(KeyEvent e){
+      if(e.getKeyCode() == e.VK_RIGHT || e.getKeyCode() == e.VK_LEFT){
+          hero.setspeedx(0);
+      }if(e.getKeyCode() == e.VK_UP || e.getKeyCode() == e.VK_DOWN){
+         hero.setspeedy(0);
+      }
+
+    }
   public void keyTyped(KeyEvent e){}
 
-      }
+
+
+  public int getspeed(){
+    return totalspeed;
+  }
+}

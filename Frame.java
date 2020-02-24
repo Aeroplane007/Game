@@ -10,7 +10,6 @@ public class Frame extends JFrame{
   Mover mov = new Mover();
 
   public Frame(){
-    add(new GraphicsPanel());
     addKeyListener(mov);
     setSize(Wwidth,Wheight);
     setTitle("Dungeon");
