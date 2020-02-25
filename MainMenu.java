@@ -15,15 +15,17 @@ public class MainMenu{
 
   public JPanel menu(){
     panel = new JPanel();
-    JButton OKButton = new JButton("start");
-<<<<<<< HEAD
-    OKButton.setFocusable(false);
-=======
->>>>>>> e58bcbc13d4cf7720ea420f545ab1fb05dcf5773
+    JButton ReadButton = new JButton("Read Game");
+    JButton CreateButton = new JButton("Create World");
+    ReadButton.setFocusable(false);
+    CreateButton.setFocusable(false);
+
     //JButton CancelButton = new JButton("Cancel");
-    OKButton.addActionListener(e -> okButtonPress());
-    //CancelButton.addActionListener((this) -> cancelButtonPress());
-    panel.add(OKButton,BorderLayout.CENTER);
+    ReadButton.addActionListener(e -> ReadButtonPress());
+    CreateButton.addActionListener(e -> CreateButtonPress());
+
+    panel.add(ReadButton,BorderLayout.CENTER);
+    panel.add(CreateButton,BorderLayout.CENTER);
     inmenu=true;
     return panel;
   }
@@ -39,15 +41,19 @@ public class MainMenu{
       Thread.sleep(10);
 
     }catch(Exception e){}
-<<<<<<< HEAD
-=======
-      System.out.println("helloo");
->>>>>>> e58bcbc13d4cf7720ea420f545ab1fb05dcf5773
+
     }
   }
 
-  public void okButtonPress() {
+  public void CreateButtonPress() {
+    String saveN = JOptionPane.showInputDialog(panel,"What is your name?", null);
     inmenu = false;
+    new GenerateWorld(saveN);
+
+  }
+  public void ReadButtonPress(){
+    inmenu = false;
+    //new ReadWorld();
   }
 
   // public void cancelButtonPress() {

@@ -13,6 +13,7 @@ public interface Skeleton{
   public int getwidth();
   public int getheight();
   public String getId();
+  public String toString();
 
   public void setposx(int x);
   public void setposy(int y);

@@ -12,10 +12,10 @@ public class RenderBox implements Skeleton{
   private Hero hero = new Hero();
 
   public RenderBox(){
-    this.posx=-100;
-    this.posy = -100;
-    this.width = 650;
-    this.height = 600;
+    this.posx= -200;
+    this.posy = -200;
+    this.width = 950;
+    this.height = 900;
   }
 
   public void render(Graphics g){

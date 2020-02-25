@@ -10,7 +10,6 @@ public class Plane implements Skeleton{
   private static int height;
   private String ID = "PLANE";
 
-<<<<<<< HEAD
 
 
 
@@ -19,17 +18,8 @@ public class Plane implements Skeleton{
     posy=0;
     width=550;
     height=500;
-=======
-
-
-
-  public Plane(){
-    posx=(-Frame.Wwidth)/2;
-    posy=(-Frame.Wheight)/2;
-    width=Frame.Wwidth*2;
-    height=Frame.Wheight*2;
->>>>>>> e58bcbc13d4cf7720ea420f545ab1fb05dcf5773
   }
+
 
   public void tick(){}
   public void render(Graphics g){

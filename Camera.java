@@ -23,21 +23,24 @@ public class Camera{
     }
 
     if(col.collidedinsidel(hero,viewbox)){
-      x+=3;
-      viewbox.setposx(viewbox.getposx()-3);
-      plane.setposx(plane.getposx()-3);
+      x+=move.getspeed();
+      viewbox.setposx(viewbox.getposx()-move.getspeed());
+      plane.setposx(plane.getposx()-move.getspeed());
+      renderB.setposx(renderB.getposx()-move.getspeed());
     }
 
     if(col.collidedinsideu(hero,viewbox)){
-      y+=3;
-      viewbox.setposy(viewbox.getposy()-3);
-      plane.setposy(plane.getposy()-3);
+      y+=move.getspeed();
+      viewbox.setposy(viewbox.getposy()-move.getspeed());
+      plane.setposy(plane.getposy()-move.getspeed());
+      renderB.setposy(renderB.getposy()-move.getspeed());
     }
 
     if(col.collidedinsided(hero,viewbox)){
-      y-=3;
-      viewbox.setposy(viewbox.getposy()+3);
-      plane.setposy(plane.getposy()+3);
+      y-=move.getspeed();
+      viewbox.setposy(viewbox.getposy()+move.getspeed());
+      plane.setposy(plane.getposy()+move.getspeed());
+      renderB.setposy(renderB.getposy()+move.getspeed());
     }
   }
 

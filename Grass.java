@@ -11,7 +11,8 @@ public class Grass implements Skeleton{
   private int width;
   private int height;
   private String ID = "GRASS";
-
+  private Hero hero = new Hero();
+  private Collision col = new Collision();
   static BufferedImage imgF,imgC;
   String ImgNameF = "Grass.jpg";
   String ImgNameC = "GrassOp.jpg";
@@ -34,11 +35,11 @@ public class Grass implements Skeleton{
   }
 
    public void render(Graphics g){
-
+     if(!col.collided(hero,this)){
        g.drawImage(imgF, posx, posy,width,height, null);
-
+     }else{
        g.drawImage(imgC, posx, posy,width,height, null);
-
+     }
     }
 
 

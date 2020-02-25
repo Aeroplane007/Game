@@ -16,7 +16,7 @@ public class Main implements Runnable{
   private Plane plane = new Plane();
   private ViewBox viewbox = new ViewBox();
   private MainMenu mainmenu = new MainMenu();
-<<<<<<< HEAD
+
   private JPanel panel = mainmenu.menu();
 
   public Main(){
@@ -25,23 +25,10 @@ public class Main implements Runnable{
     mainmenu.imenu();
     ex.remove(panel);
     new LoadImg();
-    new GenerateWorld();
     start();
   }
 
-=======
 
-
-  public Main(){
-  //  ex.add(mainmenu.menu());
-    ex.setVisible(true);
-    //mainmenu.imenu();
-    new LoadImg();
-    new LoadObj();
-    start();
-  }
-
->>>>>>> e58bcbc13d4cf7720ea420f545ab1fb05dcf5773
   public synchronized void start(){
     thread = new Thread(this);
     thread.start();

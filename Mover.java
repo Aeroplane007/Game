@@ -16,14 +16,13 @@ public class Mover implements KeyListener{
 
 
   public void keyPressed(KeyEvent e){
-<<<<<<< HEAD
 
-=======
+
+
     if(e.getKeyCode() == e.VK_SHIFT){
       totalspeed=13;
       System.out.println(totalspeed);
     }
->>>>>>> e58bcbc13d4cf7720ea420f545ab1fb05dcf5773
     if(e.getKeyCode() == e.VK_RIGHT){
         hero.setspeedx(totalspeed);
     }if(e.getKeyCode() == e.VK_LEFT){
@@ -47,12 +46,10 @@ public class Mover implements KeyListener{
       }if(e.getKeyCode() == e.VK_UP || e.getKeyCode() == e.VK_DOWN){
          hero.setspeedy(0);
       }
-<<<<<<< HEAD
-=======
       // if(e.getKeyCode() == e.VK_SHIFT){
       //   totalspeed=3;
       // }
->>>>>>> e58bcbc13d4cf7720ea420f545ab1fb05dcf5773
+
 
     }
   public void keyTyped(KeyEvent e){}
