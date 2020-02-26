@@ -30,12 +30,8 @@ public class MainMenu{
     return panel;
   }
 
-  public void paint(Graphics g) {
-    g.setColor(Color.BLACK);
-    g.drawRect(50,50,50,50);
-  }
 
-  public String imenu(){
+  public void imenu(){
     while(inmenu){
       try{
       Thread.sleep(10);
@@ -43,13 +39,13 @@ public class MainMenu{
     }catch(Exception e){}
 
     }
-    String saveN = JOptionPane.showInputDialog(panel,"What is your name?", null);
-    return saveN;
+
   }
 
   public void CreateButtonPress() {
+    String saveN = JOptionPane.showInputDialog(panel,"Name your world:", null);
+    new GenerateWorld(saveN);
     inmenu = false;
-
 
   }
   public void ReadButtonPress(){

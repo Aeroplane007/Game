@@ -5,31 +5,24 @@ public class Mover implements KeyListener{
 
   private static int totalspeed;
 
-  Skeleton hero;
+  GraphicsPanel graphics = new GraphicsPanel();
 
-  public Mover(Hero hero){
+  public Mover(){
     totalspeed = 3;
-    this.hero = hero;
   }
 
   public void keyPressed(KeyEvent e){
 
-
-
-    if(e.getKeyCode() == e.VK_SHIFT){
-      totalspeed=13;
-      System.out.println(totalspeed);
-    }
     if(e.getKeyCode() == e.VK_RIGHT){
-        hero.setspeedx(totalspeed);
+      graphics.getObj("HERO").setspeedx(totalspeed);
     }if(e.getKeyCode() == e.VK_LEFT){
-       hero.setspeedx(-totalspeed);
+      graphics.getObj("HERO").setspeedx(-totalspeed);
     }if(e.getKeyCode() == e.VK_UP){
-       hero.setspeedy(-totalspeed);
+      graphics.getObj("HERO").setspeedy(-totalspeed);
     }
 
     if(e.getKeyCode() == e.VK_DOWN){
-      hero.setspeedy(totalspeed);
+      graphics.getObj("HERO").setspeedy(totalspeed);
     }
 
 
@@ -39,13 +32,10 @@ public class Mover implements KeyListener{
 
   public void keyReleased(KeyEvent e){
       if(e.getKeyCode() == e.VK_RIGHT || e.getKeyCode() == e.VK_LEFT){
-          hero.setspeedx(0);
+        graphics.getObj("HERO").setspeedx(0);
       }if(e.getKeyCode() == e.VK_UP || e.getKeyCode() == e.VK_DOWN){
-         hero.setspeedy(0);
+        graphics.getObj("HERO").setspeedy(0);
       }
-      // if(e.getKeyCode() == e.VK_SHIFT){
-      //   totalspeed=3;
-      // }
 
 
     }

@@ -17,19 +17,19 @@ public class GraphicsPanel extends JPanel{
   private double grassgenc = 0.25;
 
 
-  public void paint(Graphics g, Skeleton hero,Skeleton renderB) {
+  public void paint(Graphics g) {
 
       super.paint(g);
-      for(Skeleton c : gameobjects){
-        if(c.getId()!="HERO"){
-          if(col.isInside(c,renderB)){
-            c.render(g);
+      for(String c : gameobjects.keySet()){
+        if(getObj(c).getId()!="HERO"){
+          if(col.isInside(getObj(c),getObj("RENDERBOX"))){
+            getObj(c).render(g);
           }
 
         }
       //  System.out.println((renderB.getposx()+renderB.getwidth())+" , "+(renderB.getposy()+renderB.getheight()));
       }
-      hero.render(g);
+      getObj("HERO").render(g);
 
       g.setColor(Color.BLACK);
       g.fillRect(600,300,20,20);
@@ -38,18 +38,42 @@ public class GraphicsPanel extends JPanel{
   }
 
   public void tick(){
-
+      gameobjects.get("HERO").tick();
   }
 
 
   public void addObj(String key, Skeleton obj){
-    gameobjects.put(obj);
+    gameobjects.put(key,obj);
   }
   public Skeleton getObj(String key){
     return gameobjects.get(key);
   }
   public int getsizeofGameobj(){
     return gameobjects.size();
+  }
+
+  public void savefile(String SaveN){
+    int i =0;
+    try{
+      File file = new File(("Save/"+SaveN + ".txt"));
+      boolean created = file.createNewFile();
+      while(!created){
+        if(file.createNewFile()){
+          break;
+        }else{
+          i++;
+          file = new File(("Save/"+SaveN + Integer.toString(i) +".txt"));
+        }
+    }
+    FileWriter writer = new FileWriter(file);
+    for(String c : gameobjects.keySet()){
+      writer.write(getObj(c).toString() + "\n");
+    }
+    writer.close();
+
+   } catch(Exception e){
+      System.err.println(e);
+    }
   }
 
 

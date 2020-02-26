@@ -9,12 +9,20 @@ public class GenerateWorld{
   private int sizeofplane = 1000;
   private Grass grass;
 
-  public GenerateWorld(String SaveN,Skeleton plane,Skeleton viewbox,Skeleton RenderB,Hero hero){
+  private Hero hero = new Hero();
+  private Plane plane = new Plane();
+  private ViewBox viewbox = new ViewBox();
+  private RenderBox renderB = new RenderBox();
+
+
+
+  public GenerateWorld(String SaveN){
     graphics.addObj(plane.getId(), plane);
     graphics.addObj(viewbox.getId(),viewbox);
-    graphics.addObj(RenderB.getId(), RenderB);
+    graphics.addObj(renderB.getId(), renderB);
+    graphics.addObj(hero.getId(), hero);
     generategrass(hero);
-    savefile(SaveN);
+    graphics.savefile(SaveN);
 
   }
 
@@ -35,30 +43,7 @@ public class GenerateWorld{
 
 
 
-  public void savefile(String SaveN){
-    int i =0;
-    try{
-      File file = new File(("Save/"+SaveN + ".txt"));
-      boolean created = file.createNewFile();
-      while(!created){
-        if(file.createNewFile()){
-          break;
-        }else{
-          i++;
-          file = new File(("Save/"+SaveN + Integer.toString(i) +".txt"));
-        }
-    }
-    FileWriter writer = new FileWriter(file);
-    for(int j = 0; j < graphics.getsizeofGameobj(); j++){
-      writer.write(graphics.getObj(j).toString() + "\n");
-      System.out.println(file);
-    }
-    writer.close();
 
-   } catch(Exception e){
-      System.err.println(e);
-    }
-  }
 
 
 
