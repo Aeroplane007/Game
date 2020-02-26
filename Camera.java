@@ -2,19 +2,18 @@ public class Camera{
 
   private float x;
   private float y;
-  private Plane plane = new Plane();
-  private Hero hero = new Hero();
-  private ViewBox viewbox = new ViewBox();
-  private Collision col = new Collision();
-  private Mover move = new Mover();
-  private RenderBox renderB = new RenderBox();
 
-  public Camera(int x, int y){
+  private Collision col;
+  private Mover move;
+
+  public Camera(int x, int y, Mover move){
     this.x = x;
     this.y = y;
+    this.move = move;
+    col = new Collision();
   }
 
-  public void tick(Skeleton obj){
+  public void tick(Skeleton hero, Skeleton plane, Skeleton renderB,Skeleton viewbox){
     if(col.collidedinsider(hero,viewbox)){
       x-=move.getspeed();
       viewbox.setposx(viewbox.getposx()+move.getspeed());

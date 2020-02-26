@@ -12,21 +12,14 @@ public class GraphicsPanel extends JPanel{
 
 
   BufferedImage img = null;
-  private Hero hero = new Hero();
-  private Plane plane = new Plane();
-  private ViewBox viewbox = new ViewBox();
-  private static List<Skeleton> gameobjects = new LinkedList<Skeleton>();
+  private static HashMap<String, Skeleton> gameobjects = new LinkedHashMap<String, Skeleton>();
   private Collision col = new Collision();
-  private RenderBox renderB = new RenderBox();
-
-
   private double grassgenc = 0.25;
 
 
-  public void paint(Graphics g) {
+  public void paint(Graphics g, Skeleton hero,Skeleton renderB) {
 
       super.paint(g);
-      plane.render(g);
       for(Skeleton c : gameobjects){
         if(c.getId()!="HERO"){
           if(col.isInside(c,renderB)){
@@ -38,27 +31,27 @@ public class GraphicsPanel extends JPanel{
       }
       hero.render(g);
 
-      viewbox.render(g);
       g.setColor(Color.BLACK);
       g.fillRect(600,300,20,20);
 
       //new DrawEnemy(g);
   }
 
+  public void tick(){
 
-
-  public void addObj(Skeleton obj){
-    gameobjects.add(obj);
   }
-  public Skeleton getObj(int i){
-    return gameobjects.get(i);
+
+
+  public void addObj(String key, Skeleton obj){
+    gameobjects.put(obj);
+  }
+  public Skeleton getObj(String key){
+    return gameobjects.get(key);
   }
   public int getsizeofGameobj(){
     return gameobjects.size();
   }
-  public Skeleton GetOb(int i){
-    return gameobjects.get(i);
-  }
+
 
 
 

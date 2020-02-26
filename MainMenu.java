@@ -35,7 +35,7 @@ public class MainMenu{
     g.drawRect(50,50,50,50);
   }
 
-  public void imenu(){
+  public String imenu(){
     while(inmenu){
       try{
       Thread.sleep(10);
@@ -43,12 +43,13 @@ public class MainMenu{
     }catch(Exception e){}
 
     }
+    String saveN = JOptionPane.showInputDialog(panel,"What is your name?", null);
+    return saveN;
   }
 
   public void CreateButtonPress() {
-    String saveN = JOptionPane.showInputDialog(panel,"What is your name?", null);
     inmenu = false;
-    new GenerateWorld(saveN);
+
 
   }
   public void ReadButtonPress(){

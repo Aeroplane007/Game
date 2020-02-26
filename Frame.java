@@ -7,10 +7,8 @@ public class Frame extends JFrame{
 
   static int Wwidth = 550;
   static int Wheight = 500;
-  Mover mov = new Mover();
 
   public Frame(){
-    addKeyListener(mov);
     setSize(Wwidth,Wheight);
     setTitle("Dungeon");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

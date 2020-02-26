@@ -4,25 +4,24 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 
-public class Grass implements Skeleton{
+public class Grass extends Skeleton{
 
-  private int posx;
-  private int posy;
-  private int width;
-  private int height;
+
   private String ID = "GRASS";
-  private Hero hero = new Hero();
   private Collision col = new Collision();
   static BufferedImage imgF,imgC;
   String ImgNameF = "Grass.jpg";
   String ImgNameC = "GrassOp.jpg";
+  Skeleton hero;
 
 
+  public Grass(Hero hero){
+    super(0,0,50,30);
+    this.hero = hero;
+    super.SetID(ID);
+  }
   public Grass(){
-    this.posx=0;
-    this.posy=0;
-    width=50;
-    height=30;
+    super(0,0,50,30);
   }
 
   public void loadimg(){
@@ -36,31 +35,15 @@ public class Grass implements Skeleton{
 
    public void render(Graphics g){
      if(!col.collided(hero,this)){
-       g.drawImage(imgF, posx, posy,width,height, null);
+       g.drawImage(imgF, getposx(), getposy(),getwidth(),getheight(), null);
      }else{
-       g.drawImage(imgC, posx, posy,width,height, null);
+       g.drawImage(imgC, getposx(), getposy(), getwidth(), getheight(), null);
      }
     }
-
-
-
-
-
 
     public void tick(){
 
     }
-
-  public int getposx(){return posx;}
-  public int getposy(){return posy;}
-  public int getwidth(){return width;}
-  public int getheight(){return height;}
-  public String getId(){return ID;}
-
-  public void setposx(int x){posx=x;}
-  public void setposy(int y){posy=y;}
-  public void setwidth(int width){this.width=width;}
-  public void setheight(int height){this.height=height;}
 
 
 }

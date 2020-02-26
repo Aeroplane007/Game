@@ -10,19 +10,22 @@ public class Main implements Runnable{
   private boolean running = false;
   private GraphicsPanel graphic = new GraphicsPanel();
   private Frame ex = new Frame();
-  private Mover mov = new Mover();
-  private Camera cam = new Camera(0,0);
   private Hero hero = new Hero();
   private Plane plane = new Plane();
   private ViewBox viewbox = new ViewBox();
+  private RenderBox renderB = new RenderBox();
   private MainMenu mainmenu = new MainMenu();
+  private Mover mov = new Mover(hero);
+  private Camera cam = new Camera(0,0,mov);
 
   private JPanel panel = mainmenu.menu();
 
   public Main(){
    ex.add(panel);
+   ex.addKeyListener(mov);
     ex.setVisible(true);
-    mainmenu.imenu();
+    String name = mainmenu.imenu();
+    new GenerateWorld(name,plane,viewbox,renderB,hero);
     ex.remove(panel);
     new LoadImg();
     start();
@@ -77,9 +80,10 @@ public class Main implements Runnable{
   }
 
   private void tick(){
+    graphics.tick();
     hero.tick();
-    cam.tick(hero);
-    cam.tick(plane);
+    cam.tick(hero,plane,renderB,viewbox);
+
   }
 
   public void render(){
@@ -94,7 +98,7 @@ public class Main implements Runnable{
     Graphics2D g2d = (Graphics2D) g;
     g2d.translate(cam.getX(),cam.getY());
 
-    graphic.paint(g);
+    graphic.paint(g,hero,renderB);
 
     g2d.translate(-cam.getX(),-cam.getY());
     g.dispose();

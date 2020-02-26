@@ -3,17 +3,14 @@ import java.awt.event.*;
 
 public class Mover implements KeyListener{
 
-  private GraphicsPanel movh = new GraphicsPanel();
-  private Hero hero = new Hero();
-  private Plane plane = new Plane();
   private static int totalspeed;
 
-  public Mover(){
+  Skeleton hero;
+
+  public Mover(Hero hero){
     totalspeed = 3;
+    this.hero = hero;
   }
-
-
-
 
   public void keyPressed(KeyEvent e){
 
