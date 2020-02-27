@@ -9,10 +9,11 @@ public class GenerateWorld{
   private int sizeofplane = 1000;
   private Grass grass;
 
-  private Hero hero = new Hero();
-  private Plane plane = new Plane();
-  private ViewBox viewbox = new ViewBox();
-  private RenderBox renderB = new RenderBox();
+  private HERO hero = new HERO();
+  private PLANE plane = new PLANE();
+  private VIEWBOX viewbox = new VIEWBOX();
+  private RENDERBOX renderB = new RENDERBOX();
+  private ROAD road = new ROAD();
 
 
 
@@ -21,6 +22,7 @@ public class GenerateWorld{
     graphics.addObj(viewbox.getId(),viewbox);
     graphics.addObj(renderB.getId(), renderB);
     graphics.addObj(hero.getId(), hero);
+    graphics.addObj(road.getId(), road);
     generategrass(hero);
     graphics.savefile(SaveN);
 
@@ -28,7 +30,7 @@ public class GenerateWorld{
 
 
 
-  public void generategrass(Hero hero){
+  public void generategrass(HERO hero){
     double chance = Math.random();
      for(int i = 0; i < amountOfBush;i++){
        grass = new Grass(hero);

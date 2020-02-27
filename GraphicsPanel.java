@@ -27,14 +27,12 @@ public class GraphicsPanel extends JPanel{
           }
 
         }
-      //  System.out.println((renderB.getposx()+renderB.getwidth())+" , "+(renderB.getposy()+renderB.getheight()));
       }
       getObj("HERO").render(g);
 
       g.setColor(Color.BLACK);
       g.fillRect(600,300,20,20);
 
-      //new DrawEnemy(g);
   }
 
   public void tick(){

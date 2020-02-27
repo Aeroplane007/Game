@@ -3,6 +3,9 @@ import java.awt.event.*;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.nio.file.*;
+import java.util.stream.*;
+import java.io.*;
 
 public class MainMenu{
 
@@ -48,13 +51,26 @@ public class MainMenu{
     inmenu = false;
 
   }
+
+
   public void ReadButtonPress(){
-    inmenu = false;
+    panel = new JPanel();
+    java.util.List<String> result;
+    try (Stream<Path> walk = Files.walk(Paths.get("Save/"))) {
+
+	      result = walk.filter(Files::isRegularFile)
+				.map(x -> x.toString()).collect(Collectors.toList());
+
+		result.forEach(System.out::println);
+
+	 } catch (IOException e) {
+		e.printStackTrace();
+	 }
+   String[] data = result.toArray();
+   JList<String> saves = new JList<String>(data);
+   panel.add(saves);
+  inmenu = false;
     //new ReadWorld();
   }
-
-  // public void cancelButtonPress() {
-  //
-  // }
 
 }

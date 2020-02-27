@@ -1,13 +1,13 @@
 import java.awt.*;
 
 
-public class ViewBox extends Skeleton{
+public class VIEWBOX extends Skeleton{
 
 
 
   private String ID = "VIEWBOX";
 
-  public ViewBox(){
+  public VIEWBOX(){
     super(100,100,300,300);
     super.SetID(ID);
   }

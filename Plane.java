@@ -3,14 +3,14 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.awt.*;
 
-public class Plane extends Skeleton{
+public class PLANE extends Skeleton{
 
   private String ID = "PLANE";
 
 
 
 
-  public Plane(){
+  public PLANE(){
     super(0,0,550,500);
     super.SetID(ID);
   }

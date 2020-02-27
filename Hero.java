@@ -1,11 +1,11 @@
 import java.awt.*;
 
-public class Hero extends Skeleton{
+public class HERO extends Skeleton{
 
 
   private String ID = "HERO";
 
-  public Hero(){
+  public HERO(){
     super(200,200,20,20);
     super.SetID(ID);
   }

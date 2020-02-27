@@ -1,11 +1,11 @@
 import java.awt.*;
 
-public class RenderBox extends Skeleton{
+public class RENDERBOX extends Skeleton{
 
 
   private String ID = "RENDERBOX";
 
-  public RenderBox(){
+  public RENDERBOX(){
     super(-200,-200,950,900);
     super.SetID(ID);
   }

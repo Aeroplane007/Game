@@ -15,7 +15,7 @@ public class Grass extends Skeleton{
   Skeleton hero;
 
 
-  public Grass(Hero hero){
+  public Grass(HERO hero){
     super(0,0,50,30);
     this.hero = hero;
     super.SetID(ID);
