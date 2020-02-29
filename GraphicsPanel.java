@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.lang.Math.*;
 import java.util.*;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 
 public class GraphicsPanel extends JPanel{
@@ -63,11 +65,11 @@ public class GraphicsPanel extends JPanel{
           file = new File(("Save/"+SaveN + Integer.toString(i) +".txt"));
         }
     }
-    FileWriter writer = new FileWriter(file);
+    ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(file));
     for(String c : gameobjects.keySet()){
-      writer.write(getObj(c).toString() + "\n");
+      objectOut.writeObject(getObj(c));
     }
-    writer.close();
+
 
    } catch(Exception e){
       System.err.println(e);

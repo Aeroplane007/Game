@@ -4,23 +4,23 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 
-public class Grass extends Skeleton{
+public class GRASS extends Skeleton{
 
 
   private String ID = "GRASS";
   private Collision col = new Collision();
   static BufferedImage imgF,imgC;
-  String ImgNameF = "Grass.jpg";
-  String ImgNameC = "GrassOp.jpg";
+  String ImgNameF = "GRASS.jpg";
+  String ImgNameC = "GRASSOp.jpg";
   Skeleton hero;
 
 
-  public Grass(HERO hero){
+  public GRASS(HERO hero){
     super(0,0,50,30);
     this.hero = hero;
     super.SetID(ID);
   }
-  public Grass(){
+  public GRASS(){
     super(0,0,50,30);
   }
 

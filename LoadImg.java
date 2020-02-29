@@ -1,6 +1,6 @@
 public class LoadImg{
 
-  private Grass grass = new Grass();
+  private GRASS grass = new GRASS();
 
 
   public LoadImg(){

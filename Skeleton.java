@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.Serializable;
 
 
-public abstract class Skeleton{
+public abstract class Skeleton implements Serializable{
 
   private int posx;
   private int posy;
@@ -11,6 +12,7 @@ public abstract class Skeleton{
   private int speedx;
   private int speedy;
   private String ID;
+  public String name;
 
   public Skeleton(int posx,int posy,int width,int height){
     this.posx=posx;
@@ -18,6 +20,9 @@ public abstract class Skeleton{
     this.width=width;
     this.height=height;
 
+  }
+  public Skeleton(String ObjectName){
+    name = ObjectName;
   }
 
   public abstract void tick();

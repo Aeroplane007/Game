@@ -54,23 +54,8 @@ public class MainMenu{
 
 
   public void ReadButtonPress(){
-    panel = new JPanel();
-    java.util.List<String> result;
-    try (Stream<Path> walk = Files.walk(Paths.get("Save/"))) {
-
-	      result = walk.filter(Files::isRegularFile)
-				.map(x -> x.toString()).collect(Collectors.toList());
-
-		result.forEach(System.out::println);
-
-	 } catch (IOException e) {
-		e.printStackTrace();
-	 }
-   String[] data = result.toArray();
-   JList<String> saves = new JList<String>(data);
-   panel.add(saves);
-  inmenu = false;
-    //new ReadWorld();
+    String World = JOptionPane.showInputDialog(panel,"Name of your world:", null);
+  //  new ReadWorld(World);
   }
 
 }
