@@ -5,8 +5,7 @@ import java.io.Serializable;
 
 public abstract class Skeleton implements Serializable{
 
-  private int posx;
-  private int posy;
+  private int[] pos;
   private int width;
   private int height;
   private int speedx;
@@ -15,8 +14,9 @@ public abstract class Skeleton implements Serializable{
   public String name;
 
   public Skeleton(int posx,int posy,int width,int height){
-    this.posx=posx;
-    this.posy=posy;
+    pos = new int[2];
+    this.pos[0]=posx;
+    this.pos[1]=posy;
     this.width=width;
     this.height=height;
 
@@ -30,22 +30,24 @@ public abstract class Skeleton implements Serializable{
 
 
 
-  public int getposx(){return posx;}
-  public int getposy(){return posy;}
+  public int getposx(){return pos[0];}
+  public int getposy(){return pos[1];}
   public int getwidth(){return width;}
   public int getheight(){return height;}
   public int getSpeedx(){return speedx;}
   public int getSpeedy(){return speedy;}
+  public int[] getCoordinates(){return pos;}
   public String getId(){return ID;}
-  public String toString(){return ID + "," + posx + "," + posy + "," + width + "," + height;}
+  public String toString(){return ID + "," + pos[0] + "," + pos[1] + "," + width + "," + height;}
 
-  public void setposx(int x){posx=x;}
-  public void setposy(int y){posy=y;}
+  public void setposx(int x){this.pos[0]=x;}
+  public void setposy(int y){this.pos[1]=y;}
   public void setwidth(int width){this.width=width;}
   public void setheight(int height){this.height=height;}
   public void setspeedx(int speedx){this.speedx=speedx;}
   public void setspeedy(int speedy){this.speedy=speedy;}
   public void SetID(String ID){this.ID = ID;}
+  public void setCoordinates(int[] i){this.pos[0]=i[0];this.pos[1]=i[1];}
 
 
 }

@@ -48,8 +48,6 @@ public class GenerateWorld{
     double chance = Math.random();
     for(int i = 0; i < amountOfRoad;i++){
       road = new ROAD();
-      int width = road.getwidth();
-      int height = road.getheight();
        if(i==0){
         graphics.addObj(road.getId() + Integer.toString(i), road);
 
@@ -59,18 +57,36 @@ public class GenerateWorld{
       }else{
         chance = Math.random();
         graphics.addObj(road.getId() + Integer.toString(i), road);
-        if(chance<=0.25){
-          graphics.getObj(road.getId() + Integer.toString(i)).setwidth(height);
-          graphics.getObj(road.getId() + Integer.toString(i)).setheight(width);
-          graphics.getObj(road.getId() + Integer.toString(i)).setposx(graphics.getObj(road.getId() + Integer.toString(i-1)).getposx()+graphics.getObj(road.getId() + Integer.toString(i-1)).getheight());
-          graphics.getObj(road.getId() + Integer.toString(i)).setposy(graphics.getObj(road.getId() + Integer.toString(i-1)).getposy()+graphics.getObj(road.getId() + Integer.toString(i-1)).getwidth());
-        }
-        else{
-        graphics.getObj(road.getId() + Integer.toString(i)).setposx(graphics.getObj(road.getId() + Integer.toString(i-1)).getposx()+ graphics.getObj(road.getId() + Integer.toString(i-1)).getwidth());
-        graphics.getObj(road.getId() + Integer.toString(i)).setposy(graphics.getObj(road.getId() + Integer.toString(i-1)).getposy());
+        if(chance<=0.5){
+          graphics.getObj(road.getId() + Integer.toString(i)).setCoordinates(rotator(45, graphics.getObj(road.getId() + Integer.toString(i-1)).getCoordinates(),road));
+
+        }else if(chance>=75){
+          graphics.getObj(road.getId() + Integer.toString(i)).setCoordinates(rotator(45, graphics.getObj(road.getId() + Integer.toString(i-1)).getCoordinates(),road));
+        }else{
+          graphics.getObj(road.getId() + Integer.toString(i)).setCoordinates(rotator(45, graphics.getObj(road.getId() + Integer.toString(i-1)).getCoordinates(),road));
         }
       }
     }
+  }
+
+  public int[] rotator(int v, int[] coordinates,Skeleton obj){
+    coordinates[0] += obj.getwidth();
+    double[][] rotation = {{Math.cos(Math.toRadians(v)),-Math.sin(Math.toRadians(v))},{Math.sin(Math.toRadians(v)),Math.cos(Math.toRadians(v))}};
+    int[] c = new int[2];
+    c[0]=coordinates[0];
+    c[1]=coordinates[1];
+    for(int i=0; i<rotation.length;i++){
+        for(int k =0; k<rotation[i].length;k++){
+        System.out.printf("i:" + i + "coordinates:" + coordinates[k] + ",");
+        c[i] += (int) Math.round(rotation[i][k]*(double)coordinates[k]);
+        System.out.printf("sum=" + rotation[i][k]*coordinates[k]);
+        System.out.println(" C: " + c[i]);
+
+        }
+
+    }
+    coordinates=c;
+    return coordinates;
   }
 
 
