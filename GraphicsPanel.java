@@ -15,7 +15,6 @@ public class GraphicsPanel extends JPanel{
 
   BufferedImage img = null;
   private static HashMap<String, Skeleton> gameobjects = new LinkedHashMap<String, Skeleton>();
-  private Collision col = new Collision();
   private double grassgenc = 0.25;
 
 
@@ -24,7 +23,7 @@ public class GraphicsPanel extends JPanel{
       super.paint(g);
       for(String c : gameobjects.keySet()){
         if(getObj(c).getId()!="HERO"){
-          if(col.isInside(getObj(c),getObj("RENDERBOX"))){
+          if(Collision.isInside(getObj(c),getObj("RENDERBOX"))){
             getObj(c).render(g);
           }
 
@@ -44,6 +43,9 @@ public class GraphicsPanel extends JPanel{
 
   public void addObj(String key, Skeleton obj){
     gameobjects.put(key,obj);
+  }
+  public void setGame(Map<String, Skeleton> gameobjects){
+    this.gameobjects = (HashMap<String, Skeleton>) gameobjects;
   }
   public Skeleton getObj(String key){
     return gameobjects.get(key);
@@ -66,9 +68,8 @@ public class GraphicsPanel extends JPanel{
         }
     }
     ObjectOutputStream objectOut = new ObjectOutputStream(new FileOutputStream(file));
-    for(String c : gameobjects.keySet()){
-      objectOut.writeObject(getObj(c));
-    }
+
+    objectOut.writeObject(gameobjects);
 
 
    } catch(Exception e){

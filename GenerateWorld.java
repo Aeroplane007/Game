@@ -9,7 +9,7 @@ public class GenerateWorld{
   private int amountOfRoad = 100;
   private int sizeofplane = 1000;
   private GRASS grass;
-  private ROAD road;
+  private ROAD road = new ROAD();
 
   private HERO hero = new HERO();
   private PLANE plane = new PLANE();
@@ -23,6 +23,7 @@ public class GenerateWorld{
     graphics.addObj(viewbox.getId(),viewbox);
     graphics.addObj(renderB.getId(), renderB);
     graphics.addObj(hero.getId(), hero);
+    graphics.addObj(road.getId(), road);
     generategrass(hero);
     graphics.addObj(inventory.getId(), inventory);
     graphics.savefile(SaveN);

@@ -76,7 +76,7 @@ public class Main implements Runnable{
 
   private void tick(){
     graphic.tick();
-    cam.tick(graphic.getObj("HERO"),graphic.getObj("PLANE"),graphic.getObj("RENDERBOX"),graphic.getObj("VIEWBOX"));
+    cam.tick(graphic.getObj("HERO"),graphic.getObj("PLANE"),graphic.getObj("RENDERBOX"),graphic.getObj("VIEWBOX"),graphic.getObj("INVENTORY"));
 
   }
 

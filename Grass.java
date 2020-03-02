@@ -8,7 +8,6 @@ public class GRASS extends Skeleton{
 
 
   private String ID = "GRASS";
-  private Collision col = new Collision();
   static BufferedImage imgF,imgC;
   String ImgNameF = "GRASS.jpg";
   String ImgNameC = "GRASSOp.jpg";
@@ -34,7 +33,7 @@ public class GRASS extends Skeleton{
   }
 
    public void render(Graphics g){
-     if(!col.collided(hero,this)){
+     if(!Collision.collided(hero,this)){
        g.drawImage(imgF, getposx(), getposy(),getwidth(),getheight(), null);
      }else{
        g.drawImage(imgC, getposx(), getposy(), getwidth(), getheight(), null);

@@ -55,7 +55,9 @@ public class MainMenu{
 
   public void ReadButtonPress(){
     String World = JOptionPane.showInputDialog(panel,"Name of your world:", null);
-  //  new ReadWorld(World);
+    GraphicsPanel graphics = new GraphicsPanel();
+    graphics.setGame(WorldReader.readWorld(World));
+    inmenu=false;
   }
 
 }
