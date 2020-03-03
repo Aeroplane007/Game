@@ -1,4 +1,7 @@
-import java.awt.*;
+import java.awt.Graphics;
+import java.awt.Color;
+import java.util.List;
+import java.util.LinkedList;
 
 public class HERO extends Skeleton{
 
@@ -15,11 +18,13 @@ public class HERO extends Skeleton{
     g.fillRect(getposx(),getposy(),getwidth(),getheight());
 
   }
-  
+
   public void tick(){
     super.setposx(super.getposx()+super.getSpeedx());
     super.setposy(super.getposy()+super.getSpeedy());
   }
+
+
 
 
 

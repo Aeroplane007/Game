@@ -12,6 +12,7 @@ public abstract class Skeleton implements Serializable{
   private int speedy;
   private String ID;
   public String name;
+  private Skeleton Has;
 
   public Skeleton(int posx,int posy,int width,int height){
     pos = new int[2];
@@ -48,6 +49,7 @@ public abstract class Skeleton implements Serializable{
   public void setspeedy(int speedy){this.speedy=speedy;}
   public void SetID(String ID){this.ID = ID;}
   public void setCoordinates(int[] i){this.pos[0]=i[0];this.pos[1]=i[1];}
+  public void setHas(Skeleton Has){this.Has = Has;}
 
 
 }

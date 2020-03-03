@@ -9,14 +9,15 @@ public class GenerateWorld{
   private int amountOfRoad = 100;
   private int sizeofplane = 1000;
   private GRASS grass;
-  private ROAD road = new ROAD();
+  private INVENTORYBOX inventorybox;
 
+  private ROAD road = new ROAD();
   private HERO hero = new HERO();
   private PLANE plane = new PLANE();
   private VIEWBOX viewbox = new VIEWBOX();
   private RENDERBOX renderB = new RENDERBOX();
   private INVENTORY inventory = new INVENTORY();
-
+  private SWORD sword = new SWORD();
 
   public GenerateWorld(String SaveN){
     graphics.addObj(plane.getId(), plane);
@@ -24,11 +25,22 @@ public class GenerateWorld{
     graphics.addObj(renderB.getId(), renderB);
     graphics.addObj(hero.getId(), hero);
     graphics.addObj(road.getId(), road);
+    graphics.addObj(sword.getId(), sword);
+
     generategrass(hero);
+
+
     graphics.addObj(inventory.getId(), inventory);
+    for(int i = inventory.getposx(); i<(inventory.getposx()+inventory.getwidth());i+=inventory.getposx()){
+      inventorybox = new INVENTORYBOX(i,inventory.getposy(),50,50);
+      graphics.addObj(inventorybox.getId()+Integer.toString((i/inventory.getposx())-1), inventorybox);
+
+    }
     graphics.savefile(SaveN);
 
   }
+
+
 
 
 

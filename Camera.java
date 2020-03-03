@@ -11,37 +11,61 @@ public class Camera{
     this.move = move;
   }
 
-  public void tick(Skeleton hero, Skeleton plane, Skeleton renderB,Skeleton viewbox,Skeleton inventory){
-    if(Collision.collidedinsider(hero,viewbox)){
+  public void tick(Skeleton hero, GraphicsPanel graphics){
+    if(Collision.collidedinsider(hero,graphics.getObj("VIEWBOX"))){
       x-=move.getspeed();
-      viewbox.setposx(viewbox.getposx()+move.getspeed());
-      plane.setposx(plane.getposx()+move.getspeed());
-      renderB.setposx(renderB.getposx()+move.getspeed());
-      inventory.setposx(inventory.getposx()+move.getspeed());
+      graphics.getObj("VIEWBOX").setposx(graphics.getObj("VIEWBOX").getposx()+move.getspeed());
+      graphics.getObj("PLANE").setposx(graphics.getObj("PLANE").getposx()+move.getspeed());
+      graphics.getObj("RENDERBOX").setposx(graphics.getObj("RENDERBOX").getposx()+move.getspeed());
+      graphics.getObj("INVENTORY").setposx(graphics.getObj("INVENTORY").getposx()+move.getspeed());
+      for(String c : graphics.getGameObjs().keySet()){
+        if(graphics.getObj(c).getId()=="INVENTORYBOX"){
+          graphics.getObj(c).setposx(graphics.getObj(c).getposx()+move.getspeed());
+
+        }
+      }
     }
 
-    if(Collision.collidedinsidel(hero,viewbox)){
+    if(Collision.collidedinsidel(hero,graphics.getObj("VIEWBOX"))){
       x+=move.getspeed();
-      viewbox.setposx(viewbox.getposx()-move.getspeed());
-      plane.setposx(plane.getposx()-move.getspeed());
-      renderB.setposx(renderB.getposx()-move.getspeed());
-      inventory.setposx(inventory.getposx()-move.getspeed());
+      graphics.getObj("VIEWBOX").setposx(graphics.getObj("VIEWBOX").getposx()-move.getspeed());
+      graphics.getObj("PLANE").setposx(graphics.getObj("PLANE").getposx()-move.getspeed());
+      graphics.getObj("RENDERBOX").setposx(graphics.getObj("RENDERBOX").getposx()-move.getspeed());
+      graphics.getObj("INVENTORY").setposx(graphics.getObj("INVENTORY").getposx()-move.getspeed());
+      for(String c : graphics.getGameObjs().keySet()){
+        if(graphics.getObj(c).getId()=="INVENTORYBOX"){
+          graphics.getObj(c).setposx(graphics.getObj(c).getposx()-move.getspeed());
+
+        }
+      }
     }
 
-    if(Collision.collidedinsideu(hero,viewbox)){
+    if(Collision.collidedinsideu(hero,graphics.getObj("VIEWBOX"))){
       y+=move.getspeed();
-      viewbox.setposy(viewbox.getposy()-move.getspeed());
-      plane.setposy(plane.getposy()-move.getspeed());
-      renderB.setposy(renderB.getposy()-move.getspeed());
-      inventory.setposy(inventory.getposy()-move.getspeed());
+      graphics.getObj("VIEWBOX").setposy(graphics.getObj("VIEWBOX").getposy()-move.getspeed());
+      graphics.getObj("PLANE").setposy(graphics.getObj("PLANE").getposy()-move.getspeed());
+      graphics.getObj("RENDERBOX").setposy(graphics.getObj("RENDERBOX").getposy()-move.getspeed());
+      graphics.getObj("INVENTORY").setposy(graphics.getObj("INVENTORY").getposy()-move.getspeed());
+      for(String c : graphics.getGameObjs().keySet()){
+        if(graphics.getObj(c).getId()=="INVENTORYBOX"){
+          graphics.getObj(c).setposy(graphics.getObj(c).getposy()-move.getspeed());
+
+        }
+      }
     }
 
-    if(Collision.collidedinsided(hero,viewbox)){
+    if(Collision.collidedinsided(hero,graphics.getObj("VIEWBOX"))){
       y-=move.getspeed();
-      viewbox.setposy(viewbox.getposy()+move.getspeed());
-      plane.setposy(plane.getposy()+move.getspeed());
-      renderB.setposy(renderB.getposy()+move.getspeed());
-      inventory.setposy(inventory.getposy()+move.getspeed());
+      graphics.getObj("VIEWBOX").setposy(graphics.getObj("VIEWBOX").getposy()+move.getspeed());
+      graphics.getObj("PLANE").setposy(graphics.getObj("PLANE").getposy()+move.getspeed());
+      graphics.getObj("RENDERBOX").setposy(graphics.getObj("RENDERBOX").getposy()+move.getspeed());
+      graphics.getObj("INVENTORY").setposy(graphics.getObj("INVENTORY").getposy()+move.getspeed());
+      for(String c : graphics.getGameObjs().keySet()){
+        if(graphics.getObj(c).getId()=="INVENTORYBOX"){
+          graphics.getObj(c).setposy(graphics.getObj(c).getposy()+move.getspeed());
+
+        }
+      }
     }
   }
 
