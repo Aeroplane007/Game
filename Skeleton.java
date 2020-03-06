@@ -12,7 +12,8 @@ public abstract class Skeleton implements Serializable{
   private int speedy;
   private String ID;
   public String name;
-  private Skeleton Has;
+  private Skeleton item;
+  private boolean hasObj;
 
   public Skeleton(int posx,int posy,int width,int height){
     pos = new int[2];
@@ -40,6 +41,8 @@ public abstract class Skeleton implements Serializable{
   public int[] getCoordinates(){return pos;}
   public String getId(){return ID;}
   public String toString(){return ID + "," + pos[0] + "," + pos[1] + "," + width + "," + height;}
+  public Skeleton getItem(){return item;}
+  public boolean getHasObj(){return hasObj;}
 
   public void setposx(int x){this.pos[0]=x;}
   public void setposy(int y){this.pos[1]=y;}
@@ -49,7 +52,7 @@ public abstract class Skeleton implements Serializable{
   public void setspeedy(int speedy){this.speedy=speedy;}
   public void SetID(String ID){this.ID = ID;}
   public void setCoordinates(int[] i){this.pos[0]=i[0];this.pos[1]=i[1];}
-  public void setHas(Skeleton Has){this.Has = Has;}
-
+  public void setItem(Skeleton item){this.item = item;}
+  public void setHasObj(){hasObj=!hasObj;}
 
 }

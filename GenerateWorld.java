@@ -25,7 +25,6 @@ public class GenerateWorld{
     graphics.addObj(renderB.getId(), renderB);
     graphics.addObj(hero.getId(), hero);
     graphics.addObj(road.getId(), road);
-    graphics.addObj(sword.getId(), sword);
 
     generategrass(hero);
 
@@ -36,6 +35,8 @@ public class GenerateWorld{
       graphics.addObj(inventorybox.getId()+Integer.toString((i/inventory.getposx())-1), inventorybox);
 
     }
+    graphics.addObj(sword.getId(), sword);
+    graphics.addObj(sword.getId(), new SWORD(100,100,100,100));
     graphics.savefile(SaveN);
 
   }

@@ -20,10 +20,11 @@ public class Mover implements KeyListener{
     }if(e.getKeyCode() == e.VK_UP){
       graphics.getObj("HERO").setspeedy(-totalspeed);
     }
-
     if(e.getKeyCode() == e.VK_DOWN){
       graphics.getObj("HERO").setspeedy(totalspeed);
     }
+    //realeasing object
+    
 
 
   }

@@ -16,7 +16,7 @@ public class GraphicsPanel extends JPanel{
   BufferedImage img = null;
   private static HashMap<String, Skeleton> gameobjects = new LinkedHashMap<String, Skeleton>();
   private static List<Skeleton> inventory = new LinkedList<Skeleton>();//faster add and remove
-  private double grassgenc = 0.25;
+  private int activeInv = 0;
 
 
   public void paint(Graphics g) {
@@ -29,16 +29,21 @@ public class GraphicsPanel extends JPanel{
           if(Collision.isInside(getObj(c),getObj("RENDERBOX"))) {
             getObj(c).render(g);
           }
-          if(c.equals(("INVENTORYBOX"+Integer.toString(i)))) {
-            if(i<inventory.size()){
-              getObj(c).setHas(inventory.get(i));
-              System.out.println("hello");
+          if(inventory.size()<9){
+            if(c.equals("INVENTORYBOX"+ Integer.toString(activeInv))){
+              for(Skeleton k : inventory){
+                k.setposx(getObj(c).getposx());
+                k.setposy(getObj(c).getposy());
+                k.render(g);
+              }
+              activeInv++;
             }
-            i++;
-          }
+        }
+
 
         }
       }
+
       getObj("HERO").render(g);
 
 

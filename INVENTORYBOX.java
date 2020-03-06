@@ -6,10 +6,12 @@ public class INVENTORYBOX extends Skeleton{
   GraphicsPanel graphics = new GraphicsPanel();
   private float thickness;
 
+
   public INVENTORYBOX(int posx,int posy,int width, int height){
     super(posx,posy,width,height);
     super.SetID(ID);
     thickness = 3;
+    setItem(null);
   }
 
 
@@ -21,12 +23,12 @@ public class INVENTORYBOX extends Skeleton{
      Graphics2D g2d = (Graphics2D) g;
      g2d.setStroke(new BasicStroke(thickness));
      g.drawRect(super.getposx(),super.getposy(),super.getwidth(),super.getheight());
+     if(getItem()!=null){getItem().render(g);}
     }
 
     public void tick(){
 
     }
-
 
 
 }

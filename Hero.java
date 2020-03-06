@@ -8,6 +8,7 @@ public class HERO extends Skeleton{
 
   private String ID = "HERO";
 
+
   public HERO(){
     super(200,200,20,20);
     super.SetID(ID);
@@ -16,6 +17,10 @@ public class HERO extends Skeleton{
   public void render(Graphics g){
     g.setColor(Color.BLUE);
     g.fillRect(getposx(),getposy(),getwidth(),getheight());
+    if(getHasObj()){
+      getItem().setposx(super.getposx()+25);
+      getItem().setposy(super.getposy());
+    }
 
   }
 
