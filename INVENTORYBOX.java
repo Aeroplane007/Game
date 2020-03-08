@@ -12,6 +12,7 @@ public class INVENTORYBOX extends Skeleton{
     super.SetID(ID);
     thickness = 3;
     setItem(null);
+    setColor(Color.BLACK);
   }
 
 
@@ -19,9 +20,10 @@ public class INVENTORYBOX extends Skeleton{
 
 
    public void render(Graphics g){
-     g.setColor(Color.BLACK);
+
      Graphics2D g2d = (Graphics2D) g;
      g2d.setStroke(new BasicStroke(thickness));
+     g.setColor(getColor());
      g.drawRect(super.getposx(),super.getposy(),super.getwidth(),super.getheight());
      if(getImgId()!=null){g.drawImage(getImage(getImgId()), getposx(), getposy(), getwidth(), getheight(), null);}
     }

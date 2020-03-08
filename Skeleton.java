@@ -22,6 +22,7 @@ public abstract class Skeleton implements Serializable{
   private boolean pickble;
   private static HashMap <String,BufferedImage> img = new LinkedHashMap<>();
   private String ImgId;
+  private Color Color;
 
   public Skeleton(int posx,int posy,int width,int height){
     pos = new int[2];
@@ -61,7 +62,7 @@ public abstract class Skeleton implements Serializable{
   public boolean getPickble(){return pickble;}
   public BufferedImage getImage(String key){return img.get(key);}
   public String getImgId(){return ImgId;}
-
+  public Color getColor(){return Color;}
 
 
   public void setposx(int x){this.pos[0]=x;}
@@ -77,6 +78,7 @@ public abstract class Skeleton implements Serializable{
   public void setPickble(){pickble=!pickble;}
   public void setImage(String key,BufferedImage img){this.img.put(key,img);}
   public void setImgId(String ImgId){this.ImgId=ImgId;}
+  public void setColor(Color color){this.Color=color;}
 
 
 }

@@ -8,7 +8,7 @@ public class LoadImg{
 
 
   public LoadImg(){
-
+    // set the key to the id of the object ur trying to add and if there are multiply images to an pickble object ur fucked so u.. know don't
     graphics.getObj("GRASS0").loadimg(graphics.getObj("GRASS0").getId()+"0",ImgGrass1);
     graphics.getObj("GRASS0").loadimg(graphics.getObj("GRASS0").getId()+"1",ImgGrass2);
     graphics.getObj("SWORD").loadimg(graphics.getObj("SWORD").getId(),ImgSword);

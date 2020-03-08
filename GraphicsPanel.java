@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.Iterator;
 import java.util.Collections;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class GraphicsPanel extends JPanel{
@@ -18,33 +19,48 @@ public class GraphicsPanel extends JPanel{
   BufferedImage img = null;
   private static HashMap<String, Skeleton> gameobjects = new LinkedHashMap<String, Skeleton>();
   private static List<Skeleton> inventory = new LinkedList<Skeleton>(Collections.nCopies(9, null));//faster add and remove
-  private int activeInv = 0;
+  private int NextEmptyInv = 0;
+  private static Skeleton ActiveInv;
+
 
 
   public void paint(Graphics g) {
 
       super.paint(g);
+      ActiveInv.setColor(Color.YELLOW);
       Iterator<String> iterator = gameobjects.keySet().iterator();
+
+
       while(iterator.hasNext()){
         String c = iterator.next();
 
         if(!Collision.isInside(getObj(c),getObj("RENDERBOX"))) {continue;}
+
         if(getObj(c).getId()!="HERO"){
 
             getObj(c).render(g);
 
+        for(int i=0; i < inventory.size(); i++){
+        if(getInv(i)!=null){
+          getObj("INVENTORYBOX"  + Integer.toString(i)).setImgId(getInv(i).getId());
+        }else{
+          getObj("INVENTORYBOX"  + Integer.toString(i)).setImgId(null);
+        }
+        }
+
+
           if(inventory.size()<10){
             if(getObj(c).getPickble()){
               if(Collision.collided(getObj("HERO"),getObj(c))){
-                setInv(activeInv,getObj(c));
-                getObj("INVENTORYBOX"  + Integer.toString(activeInv)).setImgId(getObj(c).getId());
+                setInv(NextEmptyInv,getObj(c));
+
                 if(!getObj("HERO").getHasObj()){
-                  getObj("HERO").setItem(getInv(activeInv));
+                  getObj("HERO").setItem(getInv(NextEmptyInv));
                   getObj("HERO").setHasObj();
                 }
                 iterator.remove();
 
-                activeInv++;
+                NextEmptyInv++;
               }
 
             }
@@ -55,7 +71,7 @@ public class GraphicsPanel extends JPanel{
       }
 
       getObj("HERO").render(g);
-
+      getActiveInv().render(g);
 
   }
 
@@ -77,21 +93,32 @@ public class GraphicsPanel extends JPanel{
   public Map<String, Skeleton> getGameObjs(){
     return gameobjects;
   }
-  public Skeleton getObj(String key){
+  public static Skeleton getObj(String key){
     return gameobjects.get(key);
   }
   public int getsizeofGameobj(){
     return gameobjects.size();
   }
 
+//inventory
   public Skeleton getInv(int i){
     return inventory.get(i);
   }
   public void setInv(int i,Skeleton obj){
     inventory.set(i,obj);
   }
-  public void removeInv(int i){
-    inventory.remove(i);
+  public void removeInv(Skeleton obj){
+    inventory.remove(obj);
+  }
+  public void setActiveInv(int i){
+    try{
+    ActiveInv = getObj("INVENTORYBOX" + Integer.toString(i));
+  }catch(IndexOutOfBoundsException e){
+    System.out.println("not an inventorybox");
+  }
+  }
+  public Skeleton getActiveInv(){
+    return ActiveInv;
   }
 
 

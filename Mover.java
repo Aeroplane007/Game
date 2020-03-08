@@ -25,24 +25,52 @@ public class Mover implements KeyListener{
     }
     //realeasing object
     if(e.getKeyCode() == e.VK_1){
+      graphics.getActiveInv().setColor(Color.BLACK);
       graphics.getObj("HERO").setItem(graphics.getInv(0));
+      graphics.setActiveInv(0);
     }if(e.getKeyCode() == e.VK_2){
+      graphics.getActiveInv().setColor(Color.BLACK);
       graphics.getObj("HERO").setItem(graphics.getInv(1));
+      graphics.setActiveInv(1);
     }
     if(e.getKeyCode() == e.VK_3){
+      graphics.getActiveInv().setColor(Color.BLACK);
       graphics.getObj("HERO").setItem(graphics.getInv(2));
+      graphics.setActiveInv(2);
     }
     if(e.getKeyCode() == e.VK_4){
+      graphics.getActiveInv().setColor(Color.BLACK);
       graphics.getObj("HERO").setItem(graphics.getInv(3));
+      graphics.setActiveInv(3);
     }
     if(e.getKeyCode() == e.VK_5){
+      graphics.getActiveInv().setColor(Color.BLACK);
       graphics.getObj("HERO").setItem(graphics.getInv(4));
+      graphics.setActiveInv(4);
     }
     if(e.getKeyCode() == e.VK_6){
+      graphics.getActiveInv().setColor(Color.BLACK);
       graphics.getObj("HERO").setItem(graphics.getInv(5));
+      graphics.setActiveInv(5);
     }
     if(e.getKeyCode() == e.VK_7){
+      graphics.getActiveInv().setColor(Color.BLACK);
       graphics.getObj("HERO").setItem(graphics.getInv(6));
+      graphics.setActiveInv(6);
+    }
+    if(e.getKeyCode() == e.VK_8){
+      graphics.getActiveInv().setColor(Color.BLACK);
+      graphics.getObj("HERO").setItem(graphics.getInv(7));
+      graphics.setActiveInv(7);
+    }
+    if(e.getKeyCode() == e.VK_9){
+      graphics.getActiveInv().setColor(Color.BLACK);
+      graphics.getObj("HERO").setItem(graphics.getInv(8));
+      graphics.setActiveInv(8);
+    }
+    if(e.getKeyCode() == e.VK_Q){
+      graphics.removeInv(graphics.getObj("HERO").getItem());
+      graphics.getObj("HERO").setItem(null);
     }
 
 

@@ -21,15 +21,23 @@ public class GenerateWorld{
   private MONEY money = new MONEY(100,100,20,20);
 
   public GenerateWorld(String SaveN){
+
     graphics.addObj(plane.getId(), plane);
     graphics.addObj(viewbox.getId(),viewbox);
     graphics.addObj(renderB.getId(), renderB);
     graphics.addObj(hero.getId(), hero);
     graphics.addObj(road.getId(), road);
+    generategrass(hero);
     graphics.addObj(sword.getId(), sword);
     graphics.addObj(money.getId(), money);
     graphics.addObj(sword.getId()+"0", new SWORD(300,300,10,10));
-    generategrass(hero);
+    graphics.addObj(sword.getId()+"1", new SWORD(350,300,10,10));
+    graphics.addObj(sword.getId()+"2", new SWORD(300,350,10,10));
+    graphics.addObj(sword.getId()+"3", new SWORD(500,300,10,10));
+    graphics.addObj(sword.getId()+"4", new SWORD(900,300,10,10));
+    graphics.addObj(sword.getId()+"5", new SWORD(1000,350,10,10));
+    graphics.addObj(sword.getId()+"6", new SWORD(550,300,10,10));
+
 
 
     graphics.addObj(inventory.getId(), inventory);
@@ -38,7 +46,7 @@ public class GenerateWorld{
       graphics.addObj(inventorybox.getId()+Integer.toString((i/inventory.getposx())-1), inventorybox);
 
     }
-
+    graphics.setActiveInv(0);
     graphics.savefile(SaveN);
 
   }
