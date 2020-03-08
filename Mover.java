@@ -24,7 +24,26 @@ public class Mover implements KeyListener{
       graphics.getObj("HERO").setspeedy(totalspeed);
     }
     //realeasing object
-    
+    if(e.getKeyCode() == e.VK_1){
+      graphics.getObj("HERO").setItem(graphics.getInv(0));
+    }if(e.getKeyCode() == e.VK_2){
+      graphics.getObj("HERO").setItem(graphics.getInv(1));
+    }
+    if(e.getKeyCode() == e.VK_3){
+      graphics.getObj("HERO").setItem(graphics.getInv(2));
+    }
+    if(e.getKeyCode() == e.VK_4){
+      graphics.getObj("HERO").setItem(graphics.getInv(3));
+    }
+    if(e.getKeyCode() == e.VK_5){
+      graphics.getObj("HERO").setItem(graphics.getInv(4));
+    }
+    if(e.getKeyCode() == e.VK_6){
+      graphics.getObj("HERO").setItem(graphics.getInv(5));
+    }
+    if(e.getKeyCode() == e.VK_7){
+      graphics.getObj("HERO").setItem(graphics.getInv(6));
+    }
 
 
   }

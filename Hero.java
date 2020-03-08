@@ -17,9 +17,10 @@ public class HERO extends Skeleton{
   public void render(Graphics g){
     g.setColor(Color.BLUE);
     g.fillRect(getposx(),getposy(),getwidth(),getheight());
-    if(getHasObj()){
+    if(getHasObj() && getItem() != null){
       getItem().setposx(super.getposx()+25);
       getItem().setposy(super.getposy());
+      getItem().render(g);
     }
 
   }

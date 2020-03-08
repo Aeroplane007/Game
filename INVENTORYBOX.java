@@ -23,7 +23,7 @@ public class INVENTORYBOX extends Skeleton{
      Graphics2D g2d = (Graphics2D) g;
      g2d.setStroke(new BasicStroke(thickness));
      g.drawRect(super.getposx(),super.getposy(),super.getwidth(),super.getheight());
-     if(getItem()!=null){getItem().render(g);}
+     if(getImgId()!=null){g.drawImage(getImage(getImgId()), getposx(), getposy(), getwidth(), getheight(), null);}
     }
 
     public void tick(){

@@ -8,6 +8,8 @@ import java.lang.Math.*;
 import java.util.*;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
+import java.util.Iterator;
+import java.util.Collections;
 
 
 public class GraphicsPanel extends JPanel{
@@ -15,28 +17,36 @@ public class GraphicsPanel extends JPanel{
 
   BufferedImage img = null;
   private static HashMap<String, Skeleton> gameobjects = new LinkedHashMap<String, Skeleton>();
-  private static List<Skeleton> inventory = new LinkedList<Skeleton>();//faster add and remove
+  private static List<Skeleton> inventory = new LinkedList<Skeleton>(Collections.nCopies(9, null));//faster add and remove
   private int activeInv = 0;
 
 
   public void paint(Graphics g) {
 
       super.paint(g);
-      int i = 0;
-      for(String c : gameobjects.keySet()){
+      Iterator<String> iterator = gameobjects.keySet().iterator();
+      while(iterator.hasNext()){
+        String c = iterator.next();
 
+        if(!Collision.isInside(getObj(c),getObj("RENDERBOX"))) {continue;}
         if(getObj(c).getId()!="HERO"){
-          if(Collision.isInside(getObj(c),getObj("RENDERBOX"))) {
+
             getObj(c).render(g);
-          }
-          if(inventory.size()<9){
-            if(c.equals("INVENTORYBOX"+ Integer.toString(activeInv))){
-              for(Skeleton k : inventory){
-                k.setposx(getObj(c).getposx());
-                k.setposy(getObj(c).getposy());
-                k.render(g);
+
+          if(inventory.size()<10){
+            if(getObj(c).getPickble()){
+              if(Collision.collided(getObj("HERO"),getObj(c))){
+                setInv(activeInv,getObj(c));
+                getObj("INVENTORYBOX"  + Integer.toString(activeInv)).setImgId(getObj(c).getId());
+                if(!getObj("HERO").getHasObj()){
+                  getObj("HERO").setItem(getInv(activeInv));
+                  getObj("HERO").setHasObj();
+                }
+                iterator.remove();
+
+                activeInv++;
               }
-              activeInv++;
+
             }
         }
 
@@ -51,12 +61,15 @@ public class GraphicsPanel extends JPanel{
 
   public void tick(){
       gameobjects.get("HERO").tick();
-      gameobjects.get("SWORD").tick();
+
   }
 
 
   public void addObj(String key, Skeleton obj){
     gameobjects.put(key,obj);
+  }
+  public void remObj(String key){
+    gameobjects.remove(key);
   }
   public void setGame(Map<String, Skeleton> gameobjects){
     this.gameobjects = (HashMap<String, Skeleton>) gameobjects;
@@ -74,8 +87,8 @@ public class GraphicsPanel extends JPanel{
   public Skeleton getInv(int i){
     return inventory.get(i);
   }
-  public void addToInv(Skeleton obj){
-    inventory.add(obj);
+  public void setInv(int i,Skeleton obj){
+    inventory.set(i,obj);
   }
   public void removeInv(int i){
     inventory.remove(i);

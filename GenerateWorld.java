@@ -17,7 +17,8 @@ public class GenerateWorld{
   private VIEWBOX viewbox = new VIEWBOX();
   private RENDERBOX renderB = new RENDERBOX();
   private INVENTORY inventory = new INVENTORY();
-  private SWORD sword = new SWORD();
+  private SWORD sword = new SWORD(500,500,10,10);
+  private MONEY money = new MONEY(100,100,20,20);
 
   public GenerateWorld(String SaveN){
     graphics.addObj(plane.getId(), plane);
@@ -25,7 +26,9 @@ public class GenerateWorld{
     graphics.addObj(renderB.getId(), renderB);
     graphics.addObj(hero.getId(), hero);
     graphics.addObj(road.getId(), road);
-
+    graphics.addObj(sword.getId(), sword);
+    graphics.addObj(money.getId(), money);
+    graphics.addObj(sword.getId()+"0", new SWORD(300,300,10,10));
     generategrass(hero);
 
 
@@ -35,8 +38,7 @@ public class GenerateWorld{
       graphics.addObj(inventorybox.getId()+Integer.toString((i/inventory.getposx())-1), inventorybox);
 
     }
-    graphics.addObj(sword.getId(), sword);
-    graphics.addObj(sword.getId(), new SWORD(100,100,100,100));
+
     graphics.savefile(SaveN);
 
   }

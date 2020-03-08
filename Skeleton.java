@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 
 public abstract class Skeleton implements Serializable{
@@ -14,6 +19,9 @@ public abstract class Skeleton implements Serializable{
   public String name;
   private Skeleton item;
   private boolean hasObj;
+  private boolean pickble;
+  private static HashMap <String,BufferedImage> img = new LinkedHashMap<>();
+  private String ImgId;
 
   public Skeleton(int posx,int posy,int width,int height){
     pos = new int[2];
@@ -21,7 +29,7 @@ public abstract class Skeleton implements Serializable{
     this.pos[1]=posy;
     this.width=width;
     this.height=height;
-
+    pickble = false;
   }
   public Skeleton(String ObjectName){
     name = ObjectName;
@@ -30,6 +38,13 @@ public abstract class Skeleton implements Serializable{
   public abstract void tick();
   public abstract void render(Graphics g);
 
+  public void loadimg(String key,String imgName){
+    try{
+      setImage(key,ImageIO.read(new File(imgName)));
+    }catch(IOException e){
+      System.out.println("Could not load image: " + imgName);
+    }
+  }
 
 
   public int getposx(){return pos[0];}
@@ -43,6 +58,11 @@ public abstract class Skeleton implements Serializable{
   public String toString(){return ID + "," + pos[0] + "," + pos[1] + "," + width + "," + height;}
   public Skeleton getItem(){return item;}
   public boolean getHasObj(){return hasObj;}
+  public boolean getPickble(){return pickble;}
+  public BufferedImage getImage(String key){return img.get(key);}
+  public String getImgId(){return ImgId;}
+
+
 
   public void setposx(int x){this.pos[0]=x;}
   public void setposy(int y){this.pos[1]=y;}
@@ -54,5 +74,9 @@ public abstract class Skeleton implements Serializable{
   public void setCoordinates(int[] i){this.pos[0]=i[0];this.pos[1]=i[1];}
   public void setItem(Skeleton item){this.item = item;}
   public void setHasObj(){hasObj=!hasObj;}
+  public void setPickble(){pickble=!pickble;}
+  public void setImage(String key,BufferedImage img){this.img.put(key,img);}
+  public void setImgId(String ImgId){this.ImgId=ImgId;}
+
 
 }
